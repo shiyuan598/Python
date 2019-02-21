@@ -1,3 +1,4 @@
+#爬取地图瓦片数据
 from urllib import request
 import re
 import urllib.request
@@ -40,9 +41,9 @@ def getimg(Tpath, Spath, x, y):
         print(str(x) + '_' + str(y) + '下载失败,重试')
         getimg(Tpath, Spath, x, y)
  
-zoom = 15  # 下载切片的zoom
-lefttop = deg2num(40, 116, zoom)  # 下载切片的左上角角点
-rightbottom = deg2num(39.7, 116.8, zoom)
+zoom = 5  # 下载切片的zoom
+lefttop = deg2num(50, 70, zoom)  # 下载切片的左上角角点
+rightbottom = deg2num(12, 145, zoom)
  
 print(str(lefttop[0]))
 print(str(rightbottom[0]))
@@ -51,7 +52,7 @@ print(str(rightbottom[1]))
 print("共" + str(lefttop[0] - rightbottom[0]))
 print("共" + str(lefttop[1] - rightbottom[1]))
 
-rootDir = "D:\\03code\\Python\\GetMapTile\\googleMap\\"
+rootDir = "D:\\03code\\Python\\GetMapTile\\tiandituImgLabel\\"
 
 for x in range(lefttop[0], rightbottom[0]):
     for y in range(lefttop[1], rightbottom[1]):
@@ -59,6 +60,14 @@ for x in range(lefttop[0], rightbottom[0]):
         tilepath = 'http://www.google.cn/maps/vt/pb=!1m4!1m3!1i'+str(zoom)+'!2i'+str(x)+'!3i'+str(y)+'!2m3!1e0!2sm!3i345013117!3m8!2szh-CN!3scn!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0'
         #Google影像瓦片
         #tilepath = 'http://mt2.google.cn/vt/lyrs=y&hl=zh-CN&gl=CN&src=app&x='+str(x)+'&y='+str(y)+'&z='+str(zoom)+'&s=G'
+        #天地图-地图
+        #tilepath = 'http://t4.tianditu.com/DataServer?T=vec_w&x='+str(x)+'&y='+str(y)+'&l='+str(zoom)+'&tk=45c78b2bc2ecfa2b35a3e4e454ada5ce'
+        #天地图-标注
+        #tilepath = 'http://t3.tianditu.com/DataServer?T=cva_w&x='+str(x)+'&y='+str(y)+'&l='+str(zoom)+'&tk=45c78b2bc2ecfa2b35a3e4e454ada5ce'
+        #天地图-影像
+        #tilepath = 'http://t2.tianditu.gov.cn/DataServer?T=img_w&x='+str(x)+'&y='+str(y)+'&l='+str(zoom)+'&tk=2ce94f67e58faa24beb7cb8a09780552'
+         #天地图-影像标注
+        tilepath = 'http://t2.tianditu.gov.cn/DataServer?T=cia_w&x='+str(x)+'&y='+str(y)+'&l='+str(zoom)+'&tk=2ce94f67e58faa24beb7cb8a09780552'
         path = rootDir + str(zoom) + "\\" + str(x)
         if not os.path.exists(path):
             os.makedirs(path)
