@@ -5,7 +5,7 @@ import os
 
 def startVisit():
     url = "https://blog.csdn.net/lzqg1990/article/details/"
-    ids = ["88355492", "87859541", "87859948", "88092773"]
+    ids = ["93018433", "94006663", "88092773"]
     urllist = []
     for id in ids:
         urllist.append(url + id)
@@ -17,9 +17,9 @@ def startVisit():
             for url in urllist:
                 web.open(url)  #访问网址地址，语法 .open(url,new=0,Autorasise=True),设置 new 的值不同有不同的效果0、1、2
                 i=i+1
-                time.sleep(7)  #设置每次打开新页面的等待时间
+                time.sleep(20)  #设置每次打开新页面的等待时间
         else:
-            time.sleep(5) #设置每次等待关闭浏览器的时间
+            time.sleep(20) #设置每次等待关闭浏览器的时间
             os.system('taskkill /IM chrome.exe')  #你设置的默认使用浏览器，其他的更换下就行
 
 if __name__ == '__main__':
